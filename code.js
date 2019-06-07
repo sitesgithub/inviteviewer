@@ -97,6 +97,7 @@ function getInviteInfo() {
                     }
             }
             document.getElementById('invitewait').innerText = "speeding up..."
+            
             if (jsonResponse.inviter) {
                 document.getElementById('inviteinviter0').style.display = 'block';
                 
@@ -104,11 +105,11 @@ function getInviteInfo() {
                 
                 document.getElementById('inviteinviter1').innerText = jsonResponse.inviter.username +"#"+ jsonResponse.inviter.discriminator;
                 document.getElementById('invitericon').style.background = "url(https://cdn.discordapp.com/avatars/"+jsonResponse.inviter.id+"/"+jsonResponse.inviter.avatar + ".png)"
-                document.getElementById('invitepicture').style.display = 'block'
+                document.getElementById('invitericon').style.display = 'block'
             } else {
                 document.getElementById('inviteinviter0').style.display = 'none'
                 document.getElementById('inviteinviter1').style.display = 'none'
-                document.getElementById('invitepicture').style.display = 'none'
+                document.getElementById('invitericon').style.display = 'none'
             }
             
             if (jsonResponse.guild.banner == null || undefined) {
@@ -142,6 +143,15 @@ function getInviteInfo() {
             document.getElementById("invitedesc1").style.display = "block"
 }
 
+            if (jsonResponse.guild.vanity_url_code) {
+              document.getElementById('vanityurl').style.display = "block"
+              document.getElementById('vanitycode').style.display = "block"
+              document.getElementById('vanitycode').innerText = jsonResponse.guild.vanity_url_code
+              if (invitecode == jsonResponse.guild.vanity_url_code) {
+                document.getElementById('vanityurl').style.display = "none"
+                document.getElementById('vanitycode').style.display = "none"
+              }
+            }
     document.getElementById('invitewait').innerText = "Please wait..."
     document.getElementById('servericon').style.display = 'block'
     document.getElementById('inviteinfo').style.display = 'block'
