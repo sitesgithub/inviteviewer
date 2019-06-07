@@ -12,10 +12,11 @@ function getInviteInfo() {
     document.getElementById('invitewait').style.display = 'block'
     document.getElementById('servericon').style.display = 'none'
     document.getElementById('inviteinfo').style.display = 'none'
+    document.getElementById('invitejson').style.display = 'none'
     var xhttp = new XMLHttpRequest();
     var userinput = document.getElementById("inviteinput").value;
     var urllist = ["https://discordapp.com/api/invites/", "https://discord.gg/", "https://discordapp.com/invite/", "discord.gg/", "discordapp.com/invite/"];
-    var serverFeatures = ["VIP_REGIONS", "VERIFIED", "VANITY_URL", "INVITE_SPLASH", "ANIMATED_ICON", "BANNER", "PARTNERNED"]
+    var serverFeatures = ["VIP_REGIONS", "VERIFIED", "VANITY_URL", "INVITE_SPLASH", "ANIMATED_ICON", "BANNER", "PARTNERED"]
     
     for (u in urllist) {
         if (userinput.startsWith(urllist[u])) {
@@ -102,9 +103,12 @@ function getInviteInfo() {
                 document.getElementById('inviteinviter1').style.display = 'block';
                 
                 document.getElementById('inviteinviter1').innerText = jsonResponse.inviter.username +"#"+ jsonResponse.inviter.discriminator;
+                document.getElementById('invitericon').style.background = "url(https://cdn.discordapp.com/avatars/"+jsonResponse.inviter.id+"/"+jsonResponse.inviter.avatar + ".png)"
+                document.getElementById('invitepicture').style.display = 'block'
             } else {
                 document.getElementById('inviteinviter0').style.display = 'none'
                 document.getElementById('inviteinviter1').style.display = 'none'
+                document.getElementById('invitepicture').style.display = 'none'
             }
             
             if (jsonResponse.guild.banner == null || undefined) {
@@ -137,10 +141,12 @@ function getInviteInfo() {
             
             document.getElementById("invitedesc1").style.display = "block"
 }
+
     document.getElementById('invitewait').innerText = "Please wait..."
     document.getElementById('servericon').style.display = 'block'
     document.getElementById('inviteinfo').style.display = 'block'
     document.getElementById('invitewait').style.display = 'none'
+    document.getElementById('invitejson').style.display = 'block'
         }
     };
     };
