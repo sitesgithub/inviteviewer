@@ -1,0 +1,48 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <title>Discord Invite Viewer</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    
+    <body>
+        <script src="code.js"></script>
+        <h1>Submit an invitation to get started!</h1>
+
+        <input id="inviteinput" type="text">
+
+        <button onclick="getInviteInfo()" style="margin: -4px">Submit</button>
+        <p id="invitewait" style="display:none">Please wait...</p>
+        <p id="invitejson" style="display: none;"></p>
+        <h1></h1>
+
+        <div id="servericon"></div>
+        <div id="inviteinfo">
+            <h2>Server Name</h2>
+                <p id="inviteservername"></p>
+
+            <h2 id="invitebanner0" style="display:none;">Server Banner</h2>
+            <h1 style="display: none" id="inviteh1"></h1>
+                <img style="margin: auto; border-radius: 5px;" id="invitebanner1">
+                
+            <h1 style="display: none" id="inviteh2"></h1>
+            <h2 id="invitedesc0" style="display:none;">Server Description</h2>
+                <p style="display:none;" id="invitedesc1"></p>
+
+            <h2>Invitation code</h2>
+                <p id="invitecode"></p>
+
+            <h2>Verification Level</h2>
+                <p id="inviteverifylevel"></p>
+
+            <h2 id="inviteinviter0">Inviter</h2>
+                <p id="inviteinviter1"></p>
+                
+            <h2>Features</h2>
+                <p id="invitefeatures"></p>
+                        <br>
+        <p style="padding:0px; background: #23272A" onclick="debug()">Enable JSON Output</p>
+        </div>
+    </body>
+</html>
