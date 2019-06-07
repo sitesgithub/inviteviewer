@@ -58,6 +58,16 @@ li {
     margin: auto;
 }
 
+#invitericon {
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    background: #2C2F33;
+    border-radius: 50px;
+    margin: auto;
+}
+
 p {
     width: 250px;
     padding: 15px;
