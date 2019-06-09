@@ -9,13 +9,21 @@ function debug() {
 }
 
 function getInviteInfo() {
+    var userinput = document.getElementById("inviteinput").value;
+try {
+  document.getElementById('invitewait').innerText = "If you have a slow connection, ignore this. There was an unexpected error while sending the request. Try again later."
+  jsonResponse
+}
+catch(err) {
+  if (err.response === null || undefined) {
+    document.getElementById('invitewait').innerText = "If you have a slow connection, ignore this. There was an unexpected error while sending the request. Try again later."
+  } else {
     document.getElementById('invite').innerText = "Invitation Code"
     document.getElementById('invitewait').style.display = 'block'
     document.getElementById('servericon').style.display = 'none'
     document.getElementById('inviteinfo').style.display = 'none'
     document.getElementById('invitejson').style.display = 'none'
     var xhttp = new XMLHttpRequest();
-    var userinput = document.getElementById("inviteinput").value;
     var urllist = ["https://discordapp.com/api/invites/", "https://discord.gg/", "https://discordapp.com/invite/", "discord.gg/", "discordapp.com/invite/"];
     var serverFeatures = ["VIP_REGIONS", "VERIFIED", "VANITY_URL", "INVITE_SPLASH", "ANIMATED_ICON", "BANNER", "PARTNERED", "LURKABLE"]
     
@@ -70,7 +78,7 @@ function getInviteInfo() {
                 document.getElementById("inviteverifylevel").style.background = "rgb(240, 71, 71)";
             }
             document.getElementById('invitewait').innerText = "speeding up.."
-            if (jsonResponse.guild.features.length < 1) {
+            if (jsonResponse.guild.features.length <= 1) {
                 document.getElementById("invitefeatures").outerHTML = "<p id='invitefeatures'>None</p>";
             } else {
                 document.getElementById("invitefeatures").outerHTML = "<div id='invitefeatures'></div>";
@@ -176,7 +184,6 @@ function getInviteInfo() {
     document.getElementById('servericon').style.display = 'block'
     document.getElementById('inviteinfo').style.display = 'block'
     document.getElementById('invitewait').style.display = 'none'
-    document.getElementById('invitejson').style.display = 'block'
         }
     };
     };
@@ -261,10 +268,17 @@ function getInviteInfo() {
     document.getElementById('servericon').style.display = 'block'
     document.getElementById('inviteinfo').style.display = 'block'
     document.getElementById('invitewait').style.display = 'none'
-    document.getElementById('invitejson').style.display = 'block'
         }
     };
+    try {
     xhttp.open("GET", "https://discordapp.com/api/invites/" + invitecode, true);
     xhttp.send();
-    };
-    
+    }
+    catch(err) {
+      console.log(err.response)
+    }
+    }
+
+  }
+}
+
